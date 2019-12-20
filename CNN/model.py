@@ -112,14 +112,14 @@ class TextTopicNetCNN(nn.Module):
         super(TextTopicNetCNN, self).__init__()
 
         # self.cnn = torchvision.models.vgg16(pretrained=False, num_classes=n_topics)
-        # self.cnn = torchvision.models.alexnet(pretrained=False, num_classes=n_topics)
-        self.cnn = AlexNet(num_classes=n_topics)
-        self.sigmoid = torch.nn.Sigmoid()
+        self.cnn = torchvision.models.alexnet(pretrained=False, num_classes=n_topics)
+        # self.cnn = AlexNet(num_classes=n_topics)
+        # self.sigmoid = torch.nn.Sigmoid()
         self.softmax = torch.nn.Softmax()
         self.probability = Probability()
 
         # Load pretrained layers
-        # self.load_pretrained_layers()
+        self.load_pretrained_layers()
 
     def forward(self, image):
         """
@@ -133,6 +133,10 @@ class TextTopicNetCNN(nn.Module):
         # return self.softmax(self.sigmoid(self.cnn(image)))
         # return self.probability(self.cnn(image))
         return self.softmax(self.cnn(image))
+        # if not self.training:
+        #     return self.probability(self.cnn(image))
+        # else:
+            # return self.softmax(self.cnn(image))
 
     def load_pretrained_layers(self):
         """
@@ -153,7 +157,10 @@ class TextTopicNetCNN(nn.Module):
 
         # Transfer conv. parameters from pretrained model to current model
         for i, param in enumerate(cnn_param_names[:-2]):  # excluding fc2 parameters
-            cnn_state_dict[param] = pretrained_state_dict[pretrained_param_names[i]]
+            # print(pretrained_param_names[i])
+            # cnn_state_dict[param] = pretrained_state_dict[pretrained_param_names[i]]
+            if param in pretrained_state_dict:
+                cnn_state_dict[param] = pretrained_state_dict[param]
 
         # # Note: an FC layer of size (K) operating on a flattened version (C*H*W) of a 2D image of size (C, H, W)...
         # # ...is equivalent to a convolutional layer with kernel size (H, W), input channels C, output channels K...

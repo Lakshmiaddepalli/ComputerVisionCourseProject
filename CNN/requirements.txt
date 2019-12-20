@@ -1,2 +1,9 @@
 torch
 torchvision
+numpy
+json
+termcolor
+gensim
+matplotlib
+sklearn
+scipy
