@@ -1,9 +1,9 @@
 # Self-Supervised Learning on Wikipedia Articles for Multimodal Retrieval
 
 ## Computer Vision Course Project
-## This is the course project for NYU Courant Computer Vision - CSCI-GA.2271-001 Fall 2019 course 
+# This is the course project for NYU Courant Computer Vision - CSCI-GA.2271-001 Fall 2019 course 
 
-## Contributors - Nisarg Thakkar, Lakshmi Addepalli, Srishti Grover
+# Contributors - Nisarg Thakkar, Lakshmi Addepalli, Srishti Grover
 
 @inproceedings{GomezPatelCVPR2017self,
   
