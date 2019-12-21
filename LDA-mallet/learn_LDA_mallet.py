@@ -38,17 +38,14 @@ xml_dir = db_dir+'metadata/'
 with open(train_dict_path) as f:
     train_dict = json.load(f)
 
-limit = 500
+
 data = []
 for text_path in train_dict.values():
-    if limit==0:
-       break
     with open(db_dir+text_path) as f: raw = f.read()
     #print("\n\ncurrent article data is: ", raw)
     data.append(raw)
     print('\rCreating a list of contents of all documents: %d/%d documents processed...' % (len(data),len(train_dict.values())))
     #sys.stdout.flush()
-    limit-=1
 print(' Done!\n')
 
 #print("the list of articles is: ",data)
