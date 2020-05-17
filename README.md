@@ -5,6 +5,7 @@
 
 #### Contributors - Nisarg Thakkar, Lakshmi Addepalli, Srishti Grover
 
+![Screenshot](Architecture.png)
 
 #### References:
 @inproceedings{GomezPatelCVPR2017self,
